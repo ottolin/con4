@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "con4.hpp"
 
-#define DEBUG //printf
+#define DEBUG printf
 
 struct GameState {
   char board[BOARD_WIDTH * BOARD_HEIGHT];
@@ -140,6 +140,10 @@ void checkDiagonals(GameState &game) {
   }
 }
 
+// Check the board and see if there are connected 4s
+// The call will only check connections related to latest filled position
+// This ensure that the complexity will only depend on number of filled position
+// required to win the game and is independent from the board size
 void checkConnections(GameState &game) {
   do
   {
@@ -214,6 +218,7 @@ void gameLoop(GameState &game) {
 //
 
 void test01() {
+  // vertical test
   GameState game;
   int input[] = { 0, 1, 0, 1, 0, 1, 0 };
   for (int i=0; i<7; i++) {
@@ -224,6 +229,7 @@ void test01() {
 }
 
 void test02() {
+  // positive diagonal test
   GameState game;
   int input[] = { 0,0,0,1,1,2,1,2,2,3,3,3,3 };
   for (int i=0; i<13; i++) {
@@ -234,6 +240,7 @@ void test02() {
 }
 
 void test03() {
+  // horizontal test
   GameState game;
   int input[] = { 0,0,1,1,2,2,3 };
   for (int i=0; i<7; i++) {
@@ -244,6 +251,7 @@ void test03() {
 }
 
 void test04() {
+  // negative diagonal test
   GameState game;
   int input[] = { 0,1,3,0,1,0,0,0,1,2,2 };
   for (int i=0; i<11; i++) {
