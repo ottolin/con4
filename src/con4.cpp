@@ -5,7 +5,7 @@
 #include <assert.h>
 #include "con4.hpp"
 
-#define DEBUG printf
+#define DEBUG //printf
 
 struct GameState {
   char board[BOARD_WIDTH * BOARD_HEIGHT];
