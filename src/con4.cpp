@@ -46,7 +46,7 @@ void printBoard(char (&board)[BOARD_SIZE]) {
 }
 
 int validateInput(int inputColumn) {
-  if (inputColumn < 0 || inputColumn >= 7) {
+  if (inputColumn < 0 || inputColumn >= GAME_WIDTH) {
     return GAME_ERROR_INPUT;
   } else {
     return GAME_CONTINUE;
